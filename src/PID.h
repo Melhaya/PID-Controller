@@ -3,6 +3,29 @@
 
 class PID {
  public:
+
+  /*
+  * Errors
+  */
+  double p_error;
+  double i_error;
+  double d_error;
+  double prev_cte;
+
+  /**
+   * Error counters
+  **/
+  double sum_cte;
+  double minError;
+  double maxError;
+
+  /*
+  * Coefficients
+  */
+  double Kp;
+  double Ki;
+  double Kd;
+
   /**
    * Constructor
    */
@@ -13,10 +36,10 @@ class PID {
    */
   virtual ~PID();
 
-  /**
-   * Initialize PID.
-   * @param (Kp_, Ki_, Kd_) The initial PID coefficients
-   */
+
+  /*
+  * Initialize PID.
+  */
   void Init(double Kp_, double Ki_, double Kd_);
 
   /**
@@ -31,20 +54,6 @@ class PID {
    */
   double TotalError();
 
- private:
-  /**
-   * PID Errors
-   */
-  double p_error;
-  double i_error;
-  double d_error;
-
-  /**
-   * PID Coefficients
-   */ 
-  double Kp;
-  double Ki;
-  double Kd;
 };
 
 #endif  // PID_H
